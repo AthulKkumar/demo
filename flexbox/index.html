@@ -1,0 +1,152 @@
+<!DOCTYPE html>
+<html>
+
+<body>
+    <style>
+        .pannels {
+            width: 100%;
+            height: 100vh;
+            display: flex;
+            align-items: stretch;
+            overflow: hidden;
+        }
+
+         
+    *, *:before, *:after {
+      box-sizing: inherit;
+    }
+
+        .pannel {
+            flex: 1;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            transition:
+                font-size 0.7s cubic-bezier(0.61, -0.19, 0.7, -0.11),
+                flex 0.7s cubic-bezier(0.61, -0.19, 0.7, -0.11),
+                background 0.2s;
+            font-size: 20px;
+            background-size: cover;
+            background-position: center;
+        }
+
+        .pannel > * {
+            margin: 0;
+            width: 100%;
+            transition: transform 0.5s;
+            flex: 1 0 auto;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+
+        }
+
+        .pannel>*:first-child {
+
+            transform: translateY(-100%);
+
+        }
+
+        .pannel.open-active  > *:first-child {
+            transform: translateY(0);
+        }
+
+        .pannel > *:last-child {
+
+            transform: translateY(100%);
+
+        }
+
+        .pannel.open-active > *:last-child {
+            transform: translateY(0);
+        }
+
+        .pannel.open {
+            flex: 4;
+            font-size: 40px;
+        }
+
+        .panel1 {
+            background-image: url(https://external-content.duckduckgo.com/iu/?u=https%3A%2F%2Ftse1.mm.bing.net%2Fth%3Fid%3DOIP.c2Bw7aR6-xwnUu18iftEVwHaF7%26pid%3DApi&f=1);
+        }
+
+        .panel2 {
+            background-image: url(https://source.unsplash.com/rFKUFzjPYiQ/1500x1500);
+        }
+
+        .panel3 {
+            background-image: url(https://images.unsplash.com/photo-1465188162913-8fb5709d6d57?ixlib=rb-0.3.5&q=80&fm=jpg&crop=faces&cs=tinysrgb&w=1500&h=1500&fit=crop&s=967e8a713a4e395260793fc8c802901d);
+        }
+
+        .panel4 {
+            background-image: url(https://source.unsplash.com/ITjiVXcwVng/1500x1500);
+        }
+
+        .panel5 {
+            background-image: url(https://source.unsplash.com/3MNzGlQM7qs/1500x1500);
+        }
+
+
+    
+    
+    </style>
+
+    <div class="pannels">
+        <div class="pannel panel1">
+            <p>hi</p>
+            <p>welcome</p>
+            <p>ha</p>
+
+        </div>
+
+        <div class="pannel panel2">
+            <p>hi</p>
+            <p>welcome</p>
+            <p>ha</p>
+
+
+        </div>
+
+        <div class="pannel panel3">
+            <p>hi</p>
+            <p>welcome</p>
+            <p>ha</p>
+
+
+        </div>
+
+        <div class="pannel panel4">
+            <p>hi</p>
+            <p>welcome</p>
+            <p>ha</p>
+
+
+        </div>
+
+
+    </div>
+
+    <script>
+
+        const pannels = document.querySelectorAll('.pannel');
+
+        function toogleOpen() {
+            console.log(this.classList)
+            this.classList.toggle('open');
+        }
+
+        function toggleActive(e) {
+
+            console.log(e.propertyName);
+            if (e.propertyName.includes('flex-grow')) {
+                this.classList.toggle('open-active');
+            }
+        }
+
+        pannels.forEach(pannel => pannel.addEventListener('click', toogleOpen));
+        pannels.forEach(pannel => pannel.addEventListener('transitionend', toggleActive));
+    </script>
+</body>
+
+</html>
