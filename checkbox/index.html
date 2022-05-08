@@ -1,0 +1,66 @@
+<!DOCTYPE html>
+<html>
+    <head>
+
+    </head>
+    <body>
+
+        <style>
+
+        </style>
+
+        <div class="inbox">
+            <input type="checkbox">
+            <p>hi</p>
+            <div>
+            <input type="checkbox">
+            <p>hello</p>
+            </div>
+            <div>
+            <input type="checkbox">
+            <p>why</p>
+            </div>
+            <div>
+            <input type="checkbox">
+            <p>what</p>
+            </div>
+            <div>
+            <input type="checkbox">
+            <p>what</p>
+            </div>
+           
+        </div>
+
+        <script>
+
+            const checkboxs = document.querySelectorAll('.inbox input[type="checkbox"]');
+            let lastCheck;
+            
+
+            function handle(e){
+                
+                let inBetween = false;
+                if(e.shiftKey && this.checked){
+                    
+                    checkboxs.forEach(checkbox => {
+                            console.log(checkbox)
+                        if (checkbox === this || checkbox === lastCheck){
+                            inBetween = !inBetween;
+                           console.log("hi")
+                        }
+
+                        if (inBetween) { 
+                            checkbox.checked=true;
+                        }
+
+                    });
+                }
+
+            
+
+            lastCheck = this;
+            }
+            checkboxs.forEach(checkbox => checkbox.addEventListener('click', handle));
+        </script>   
+    </body>
+</html>
